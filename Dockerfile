@@ -1,12 +1,12 @@
 FROM python:3.10
 
 
-WORKDIR /notecards
+WORKDIR /postcards
 
-COPY ./requirements.txt /notecards/requirements.txt
+COPY ./requirements.txt /postcards/requirements.txt
 
-RUN pip install --upgrade -r /notecards/requirements.txt
+RUN pip install --upgrade -r /postcards/requirements.txt
 
-COPY ./backend /notecards/backend
+COPY ./backend /postcards/backend
 
 CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
