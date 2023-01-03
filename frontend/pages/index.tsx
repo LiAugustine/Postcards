@@ -1,26 +1,25 @@
-import { useState, useEffect } from "react";
 import axios from 'axios'
-import Navbar from './Navbar'
-import {
-  Text
-} from '@chakra-ui/react'
+import { useState, useEffect } from 'react';
+
 
 export default function Home() {
-  const [msg, setMsg] = useState([])
-  console.log(msg)
+  const [backend, setBackend] = useState('')
+
+
   useEffect(() => {
-    axios.get("/api/HelloWorld")
-      .then((response) => {
-        setMsg(response.data)
+    axios.get("/api/helloworld")
+      .then((res) => {
+        setBackend(res.data)
       });
   }, []);
 
+
+
   return (
     <div>
-      <Navbar />
-      <Text>
-        {msg}
-      </Text>
+      <p>
+        {backend}
+      </p>
     </div>
   )
 }
